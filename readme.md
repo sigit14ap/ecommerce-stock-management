@@ -9,7 +9,7 @@ A backend for Ecommerce stock management using Go and Microservices Architecture
 
 ### Environment Variables
 
-To run this project, you will need copy the .env.example as .env file in each services.
+To run this project, you need to copy the .env.example as .env file in each services.
 
 
 ## Deployment
@@ -20,6 +20,17 @@ To deploy this project with docker
 ```
  docker-compose build --no-cache
 ```
+
+If the docker build is take too long time, you can build it one by one each services.
+```
+cd api-gateway && docker build -t api-gateway .
+cd order-service && docker build -t order-service .
+cd product-service && docker build -t product-service .
+cd shop-service && docker build -t shop-service .
+cd user-service && docker build -t user-service .
+cd warehouse-service && docker build -t warehouse-service .
+```
+
 
 ### Compose
 ```

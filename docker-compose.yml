@@ -26,6 +26,7 @@ services:
       context: ./api-gateway
     ports:
       - "7000:7000"
+    restart: on-failure
     networks:
       - microservice-network
   
@@ -34,6 +35,7 @@ services:
       context: ./user-service
     ports:
       - "8000:8000"
+    restart: on-failure
     depends_on:
       mysql:
         condition: service_healthy
@@ -45,6 +47,7 @@ services:
       context: ./shop-service
     ports:
       - "8001:8001"
+    restart: on-failure
     depends_on:
       mysql:
         condition: service_healthy
@@ -56,6 +59,7 @@ services:
       context: ./product-service
     ports:
       - "8002:8002"
+    restart: on-failure
     depends_on:
       mysql:
         condition: service_healthy
@@ -67,6 +71,7 @@ services:
       context: ./warehouse-service
     ports:
       - "8003:8003"
+    restart: on-failure
     depends_on:
       mysql:
         condition: service_healthy
@@ -78,6 +83,7 @@ services:
       context: ./order-service
     ports:
       - "8004:8004"
+    restart: on-failure
     depends_on:
       mysql:
         condition: service_healthy
