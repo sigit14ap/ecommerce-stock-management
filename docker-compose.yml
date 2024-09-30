@@ -1,0 +1,92 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: ecommercePassword
+      MYSQL_DATABASE: ecommerce
+      MYSQL_USER: user
+      MYSQL_PASSWORD: ecommercePassword
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - microservice-network
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+    ports:
+      - "7000:7000"
+    networks:
+      - microservice-network
+  
+  user-service:
+    build:
+      context: ./user-service
+    ports:
+      - "8000:8000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - microservice-network
+  
+  shop-service:
+    build:
+      context: ./shop-service
+    ports:
+      - "8001:8001"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - microservice-network
+
+  product-service:
+    build:
+      context: ./product-service
+    ports:
+      - "8002:8002"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - microservice-network
+
+  warehouse-service:
+    build:
+      context: ./warehouse-service
+    ports:
+      - "8003:8003"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - microservice-network
+
+  order-service:
+    build:
+      context: ./order-service
+    ports:
+      - "8004:8004"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - microservice-network
+
+volumes:
+  db_data:
+
+networks:
+  microservice-network:
+    driver: bridge

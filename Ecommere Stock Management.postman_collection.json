@@ -1,0 +1,1314 @@
+{
+	"info": {
+		"_postman_id": "5cc83c71-8870-4333-9c2d-daf0198c836f",
+		"name": "Ecommere Stock Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13224906"
+	},
+	"item": [
+		{
+			"name": "API Gateway",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone\": \"123123123\",\r\n    \"email\": \"test@test.test\",\r\n    \"password\": \"123123123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/users/register",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"email_or_phone\": \"123123123\",\r\n    \"email_or_phone\": \"test@test.test\",\r\n    \"password\": \"123123123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/users/login",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Me",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{user_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/users/me",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"me"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Shop",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"shop test\",\r\n    \"email\": \"test@test.test\",\r\n    \"password\": \"123123123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/shop/register",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shop",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"test@test.test\",\r\n    \"password\": \"123123123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/shop/login",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shop",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Me",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/shop/me",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shop",
+										"me"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "Shop Product List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/products/shop/products",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"shop",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Shop Product Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"prd 2\",\r\n    \"price\": 30000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/products/shop/products",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"shop",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Shop Product Detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/products/shop/products/1",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"shop",
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Shop Product Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"prd 1\",\r\n    \"price\": 40000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/products/shop/products/1",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"shop",
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Shop Product Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"prd 1\",\r\n    \"price\": 30000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/products/shop/products/1",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"shop",
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Product List",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/products",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Warehouse",
+					"item": [
+						{
+							"name": "Warehouses List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/warehouses",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"warehouses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Warehouse Set Status",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/warehouses/1/status",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"warehouses",
+										"1",
+										"status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Shop Get Stocks",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/warehouses/stocks/warehouse/1",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"warehouses",
+										"stocks",
+										"warehouse",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Shop Send Stocks",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"warehouse_id\": 1,\r\n    \"product_id\": 1,\r\n    \"quantity\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/warehouses/stocks/send-stock",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"warehouses",
+										"stocks",
+										"send-stock"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Shop Transfer Stocks",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"source_warehouse_id\": 1,\r\n    \"destination_warehouse_id\": 2,\r\n    \"product_id\": 1,\r\n    \"quantity\": 4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/warehouses/stocks/transfer-stock",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"warehouses",
+										"stocks",
+										"transfer-stock"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "Checkout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{user_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\": [{\r\n        \"product_id\": 1,\r\n        \"quantity\": 1\r\n    }, {\r\n        \"product_id\": 2,\r\n        \"quantity\": 1\r\n    }]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_gateway_url}}/api/v1/orders/checkout",
+									"host": [
+										"{{api_gateway_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"checkout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User Service",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\": \"081238812382\",\r\n    \"email\": \"sigit@1asdas25.sadd\",\r\n    \"password\": \"test123123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{user_service_url}}/api/v1/users/register",
+							"host": [
+								"{{user_service_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"email_or_phone\": \"08123881238\",\r\n    \"email_or_phone\": \"sigit@1asdas2.sadd\",\r\n    \"password\": \"test123123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{user_service_url}}/api/v1/users/login",
+							"host": [
+								"{{user_service_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{user_service_url}}/api/v1/users/me",
+							"host": [
+								"{{user_service_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shop Service",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"shop 1\",\r\n    \"email\": \"sigit@1asdas.sadd\",\r\n    \"password\": \"test123123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{shop_service_url}}/api/v1/shop/register",
+							"host": [
+								"{{shop_service_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"shop",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sigit@1asdas.sadd\",\r\n    \"password\": \"test123123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{shop_service_url}}/api/v1/shop/login",
+							"host": [
+								"{{shop_service_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"shop",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{shop_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{shop_service_url}}/api/v1/shop/me",
+							"host": [
+								"{{shop_service_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"shop",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product Service",
+			"item": [
+				{
+					"name": "Store",
+					"item": [
+						{
+							"name": "Product List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{product_service_url}}/api/v1/shop/products",
+									"host": [
+										"{{product_service_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shop",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"test\",\r\n    \"price\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{product_service_url}}/api/v1/shop/products",
+									"host": [
+										"{{product_service_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shop",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Detail Product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{product_service_url}}/api/v1/shop/products/1",
+									"host": [
+										"{{product_service_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shop",
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"test\",\r\n    \"price\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{product_service_url}}/api/v1/shop/products/2",
+									"host": [
+										"{{product_service_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shop",
+										"products",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{product_service_url}}/api/v1/shop/products/2",
+									"host": [
+										"{{product_service_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shop",
+										"products",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "Products List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{product_service_url}}/api/v1/products",
+									"host": [
+										"{{product_service_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Warehouse Service",
+			"item": [
+				{
+					"name": "Warehouse",
+					"item": [
+						{
+							"name": "Warehouse List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{warehouse_service_url}}/api/v1/warehouses",
+									"host": [
+										"{{warehouse_service_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"warehouses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Set Status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{warehouse_service_url}}/api/v1/warehouses/1/status",
+									"host": [
+										"{{warehouse_service_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"warehouses",
+										"1",
+										"status"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Stocks",
+					"item": [
+						{
+							"name": "Stock List By Warehouse",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"warehouse_id\": 1,\r\n    \"product_id\": 2,\r\n    \"quantity\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{warehouse_service_url}}/api/v1/stocks/warehouse/1",
+									"host": [
+										"{{warehouse_service_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"stocks",
+										"warehouse",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Stock",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"warehouse_id\": 1,\r\n    \"product_id\": 2,\r\n    \"quantity\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{warehouse_service_url}}/api/v1/stocks/send-stock",
+									"host": [
+										"{{warehouse_service_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"stocks",
+										"send-stock"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Transfer Stock",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{shop_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"source_warehouse_id\": 1,\r\n    \"destination_warehouse_id\": 2,\r\n    \"product_id\": 2,\r\n    \"quantity\": 4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{warehouse_service_url}}/api/v1/stocks/transfer-stock",
+									"host": [
+										"{{warehouse_service_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"stocks",
+										"transfer-stock"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Order Service",
+			"item": [
+				{
+					"name": "Checkout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"items\": [{\r\n        \"product_id\": 1,\r\n        \"quantity\": 5\r\n    }, {\r\n        \"product_id\": 2,\r\n        \"quantity\": 1\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{order_service_url}}/api/v1/order/checkout",
+							"host": [
+								"{{order_service_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.request.headers.add(\"X-Service-Token: {{service_token}}\");"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "service_token",
+			"value": "ecommerceSecret",
+			"type": "string"
+		},
+		{
+			"key": "user_service_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "shop_service_url",
+			"value": "http://localhost:8001",
+			"type": "string"
+		},
+		{
+			"key": "shop_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoic2hvcCIsImVtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJzaG9wX2lkIjoyLCJleHAiOjE3Mjc3MTA0MzB9.5_kJxAbn9mvBkwkNctWF8jt9tKS3vggGStZQlFvXwII",
+			"type": "string"
+		},
+		{
+			"key": "product_service_url",
+			"value": "http://localhost:8002",
+			"type": "string"
+		},
+		{
+			"key": "warehouse_service_url",
+			"value": "http://localhost:8003",
+			"type": "string"
+		},
+		{
+			"key": "user_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoidXNlciIsImVtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJwaG9uZSI6IiIsInVzZXJfaWQiOjUsImV4cCI6MTcyNzcwNjg3Nn0.Cnb5Xo4Zgro1zA29G4QyhPiT-ATJ-UEmce7Zo4mmMac",
+			"type": "string"
+		},
+		{
+			"key": "order_service_url",
+			"value": "http://localhost:8004",
+			"type": "string"
+		},
+		{
+			"key": "api_gateway_url",
+			"value": "http://localhost:7000",
+			"type": "string"
+		}
+	]
+}
